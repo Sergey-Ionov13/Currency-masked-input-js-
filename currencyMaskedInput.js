@@ -33,6 +33,10 @@ function currencyMaskedInput() {
  */
 function currencyMask(str) {
     const myReg = /(\d+((,\d+)+)?\.?)/g;
+    //проверка на число вводимых пользователем данных
+    if (str.search(myReg) === -1) {
+        return '';
+    }
     const regRest = /\.(\d+)?/g;
 
     const arrayFromString = getSubStr(str, myReg).split('');
