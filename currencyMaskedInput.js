@@ -66,7 +66,7 @@ function currencyMask(str) {
 function correctingString(str) {
 
   const myReg = /^(\d+)((,?\d*)*\.?\d*)$/;
-  const backupReg = /^(\d+)(,?\d*)*\.?\d*/;
+  const backupReg = /(\d+)(,?\d*)*\.?\d*/;
 
   if (!~str.search(myReg)) {
     if (~str.search(backupReg)) {
