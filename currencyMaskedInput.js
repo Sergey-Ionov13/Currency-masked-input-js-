@@ -9,7 +9,7 @@ function currencyMaskedInput() {
 
   let inputFields = document.querySelectorAll("input[currency]");
 
-  inputFields.forEach((elem) => elem.addEventListener('input', function () {
+  inputFields.forEach((elem) => elem.addEventListener('input', () => {
     const inputValue = elem['value'];
     if (inputValue) elem['value'] = currencyMask(inputValue);
   }));
@@ -44,13 +44,9 @@ function currencyMask(str) {
         return maskStr(cleaningArr(arrFromStr));
       }
     }
-  }
-
-  if (arrFromStr.lastIndexOf(',') < arrFromStr.length - 4) {
+  } else if (arrFromStr.lastIndexOf(',') < arrFromStr.length - 4) {
     return maskStr(cleaningArr(arrFromStr));
-  }
-
-  if (commasIndexes.length > 1) {
+  } else if (commasIndexes.length > 1) {
     if (!checkCommasIndexValid(commasIndexes[commasIndexes.length - 1] + 4, commasIndexes)) {
       return maskStr(cleaningArr(arrFromStr));
     }
@@ -60,7 +56,7 @@ function currencyMask(str) {
 
 /*
 проверяем переданную в качестве параметра строку на соответствие необходимому формату. Если соответствие есть, то её же и возвращаем,
-если нет, то функция ищет подстроку, соответствующую "backupReg до первой ошибки и возвращает её, а если строка начинается из
+если нет, то функция ищет подстроку, соответствующую "backupReg до первой ошибки и возвращает её, а если строка состоит из
 недопустимых символов, то возвращается пустая строка.
  */
 function correctingString(str) {
